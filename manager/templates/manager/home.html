@@ -1,0 +1,232 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+  <nav class="navbar navbar-expand-sm navbar-light" id="myTopnav">
+    <div class="container">
+      <a class="navbar-brand" href="https://niraj.acetechnepal.com"><i class="fa fa-user"></i> Niraj</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a href="#home" class="nav-link"><span data-hover="Home">Welcome</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="#about" class="nav-link"><span data-hover="Me">About</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="#project" class="nav-link"><span data-hover="Projects">My works</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link"><span data-hover="Contact">Get In Touch</span></a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-lg-auto">
+          <div class="ml-lg-4">
+            <div class="color-mode d-lg-flex justify-content-center align-items-center">
+              <i class="fa fa-magic"> </i>
+              Change Color mode
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="about full-screen d-lg-flex justify-content-center align-items-center" id="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
+          <div class="about-text">
+            <small class="small-text">Welcome to <span class="mobile-block">my portfolio website!</span></small>
+            <h1 class="animated animated-text">
+              <span class="mr-2">Hey there, I'm</span>
+              <div class="animated-info">
+                <span class="animated-item">Niraj</span>
+                <span class="animated-item">Backend Developer</span>
+                <span class="animated-item">Web App Developer</span>
+              </div>
+            </h1>
+            <h3 style="font-size: 1.5rem;">Get your things done with "Your ideas my perfection".</h3>
+              <p style="font-size: 1.5rem;">I code and develop systems beautifully to help your
+              business and agencies connect globally and grow more.</p>
+            <p style="font-size: 1.5rem;">Interested in working together?</p>
+            <div class="custom-btn-group mt-4">
+              <a href="https://acetechnepal.com/#contact"><button class="glow-on-hover" type="button">Hire Me</button></a>
+              <p style="font-size: 1.8rem;"> Through AceTech </p> </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-12 col-12">
+          <div class="about-image svg">
+            <img src="{%static 'nirajstatic/media/images/avatar.png' %}" class="img-fluid" alt="profile image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="section is-medium is-primary has-text-centered is-long" id="about">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-three-fifths">
+          <h1 class="title is-spaced is-size-3-desktop is-size-4-mobile" style="color: #fff; font-size: 1.5rem;">Backend
+            Web app Developer using python and Django</h1>
+          <p class="subtitle is-size-5-desktop" style="color: #fff; font-size: 1.2rem;">I am mainly a backend web app
+            developer. I have learned python programming language
+            and Django framework. I use PostgreSQL for the database. Currently i am pushing my skills further on my
+            frontend
+            development. I do some frontend development using HTML, CSS and Javascript.</p>
+          <p class="subtitle is-size-5-desktop" style="color: #fff; font-size: 1.2rem;">I also do digital marketting,
+            product design, and data management along with my team in AceTech.
+            <br>
+            AceTech is a software, ecommerce, website design and development IT company in Nepal. It is operated and
+            owned by AceTech pvt.ltd.
+            AceTech helps you connect your business with client much easier, securely and user friendly. AceTech
+            develops a secure and easy to
+            understand web application, ecommerce applications and sites that fit your thought and on your budget.
+            <br><br><u></u>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section skills has-text-centered">
+    <div class="container is-narrow">
+      <div class="box">
+        <div class="content">
+          <div class="columns is-centered">
+            {% for skill in skill_list %}
+            <div class="outercolumn">
+              <div>
+              <div class="column">
+                <figure class="image"><img class="is-skill-icon" src="{{skill.image.url}}"></figure>
+                <h1 class="title is-size-4 is-spaced">{{skill.name}}</h1>
+                <p class="skill-detail">{{skill.detail}}</p>
+              </div>
+              <div class="column">
+                <h1 class="title is-size-4 is-spaced" style="font-size: 1.2rem;">Languages :</h1>
+                {% for language in skill.planguage_set.all %}
+                  <p>{{language.name}}</p>
+                {% endfor %}
+              </div>
+              <div class="column">
+                <h1 class="title is-size-4 is-spaced" style="font-size: 1.2rem;">Frameworks :</h1>
+                {% for frame in skill.framework_set.all %}
+                  <p>{{frame.framework_name}}</p>
+                {% endfor %}
+              </div>
+              {% if skill.name == "BackEnd Developer" %}
+              <div class="column">
+                <h1 class="title is-size-4 is-spaced" style="font-size: 1.2rem;">Databases :</h1>
+                {% for database in skill.database_set.all %}
+                  <p>{{database.database_name}}</p>
+                {% endfor %}
+              </div>
+              {% endif %}
+              <div class="column">
+                <h1 class="title is-size-4 is-spaced" style="font-size: 1.2rem;">Dev Tools :</h1>
+                {% for dev in skill.dtool_set.all %}
+                  <p>{{dev.tool_name}}</p>
+                {% endfor %}
+              </div>
+            </div>
+            </div>
+            {% endfor %}
+            </div>
+          </div> 
+        </div>  
+      </div>
+    </div>
+    </div>
+  </section>
+  <section id="project">
+  <span class="span-class"></span><span style="display: flex; justify-content: center;"><h1> My portfolio</h1></span><span></span><span></span>
+  <div class="portfolio-head">
+    <h4>Some of my works</h4>
+  </div>
+  
+  <div class="slider">
+    <div class="slide-track">
+      <div class="slide">
+        <a href="#"><img src="{% static 'nirajstatic/media/images/avatar.png' %}" height="100" width="250" alt="" /></a>
+      </div>
+      {% for project in project_list %}
+      <div class="slide">
+          <a href="{{project.url}}"><img src="{{project.image.url}}" height="100" width="250" alt="" /></a>
+      </div>
+    {% endfor %}
+    <div class="slide">
+      <img src="{% static 'nirajstatic/media/images/avatar.png' %}" height="100" width="250" alt="" />
+    </div>
+    </div>
+  </div>
+  </section>
+  <span class="span-class"></span>
+  <section class="contact py-5" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 mr-lg-5 col-12">
+          <div class="contact-info d-flex justify-content-between align-items-center py-4 px-lg-5">
+            <ul class="social-links">
+              <li>
+                <i class="fa fa-envelope"></i>
+                <a href="mailto:">niraj.sub432@gmail.com</a>
+              </li>
+              <li>
+                <i class="fa fa-whatsapp"></i>
+                <a href="tel:">+977 9861521499</a>
+              </li>
+            </ul>
+
+            <ul class="social-links" style="display: block;">
+              <li>
+                <a href="https://www.facebook.com/nirajthito.subedi"><i class="fa fa-facebook"></i></a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/niraj.sub/"><i class="fa fa-instagram"></i></a>
+              </li>
+              <li>
+                <a href="https://twitter.com/nirajsub111"><i class="fa fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/gp-niraj-subedi-868734200/"><i class="fa fa-linkedin"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6 col-12">
+          <div class="contact-form">
+            <h2 class="mb-4">Interested to work together? Let's talk</h2>
+            <form method="post" action="/contact/">
+              {% csrf_token %}
+              <div class="grid-50-50">
+                <input type="name" placeholder="Full Name" id="name" name="name" aria-describedby="name" />
+                <input type="email" placeholder="Email" id="email" name="email" aria-describedby="email" />
+                <input type="tel" placeholder="Phone" id="phone" name="phone" aria-describedby="phone" />
+              </div>
+              <div class="grid-full">
+                <textarea placeholder="Enter the message.." cols="30" rows="10" id="content" name="content"
+                  aria-describedby="content"></textarea>
+                <button type="submit" class="form-control submit-btn">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-12">
+          <p class="copyright-text text-center">Copyright &copy; 2022 Niraj . All rights reserved</p>
+          <p class="copyright-text text-center">Designed by <a rel="nofollow"
+              href="https://www.facebook.com/nirajthito.subedi">Niraj</a> | <a href="https://acetechnepal.com/">AceTech</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  {% endblock content %}
